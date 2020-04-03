@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Upload File</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<h1 th:text="${'Index of ' + path }">Index of /2589/</h1>
+<div>
+    <p>
+        <label style="border: 1px solid black;display: inline-block;">
+            上传文件
+        <input id="uploadFile" type="file" name="file" hidden>
+        </label>
+    </p>
+
+
+    <form id="form" action="/api/uploadDirectory" method="post" enctype="multipart/form-data">
+        <label style="border: 1px solid black;display: inline-block;">
+            上传文件夹
+        <input id="uploadDirectory" type="file" name="folder" multiple webkitdirectory hidden/>
+        </label>
+        <input  name="path" th:value="${path}" type="hidden"/>
+    </form>
+
+</div>
+<hr>
+<div>
+    <div style="width: 300px">
+        <a th:href="${parentPath}">../</a>
+    </div>
+    <div th:each="file : ${files}">
+        <div style="display: inline-block;width: 300px">
+            <a th:if="${file.fileType == file.fileType.DIRECTORY}" th:href="${file.getFileName()+'/'}"
+               th:text="${file.getFileName()+'/'}">1</a><a th:if="${file.fileType == file.fileType.FILE}"
+                                                           data-th-text="${file.fileName }" th:href="${file.relativePath}"></a>
+        </div>
+        <div style="display: inline-block;width: 200px">
+            <th:block th:text="${file.createTime}"/>
+
+        </div>
+        <div style="display: inline-block">
+            <th:block th:text="${file.size}"/>
+        </div>
+    </div>
+
+</div>
+<hr>
+<script>
+    function uploadfile(url) { //当文档准备就绪时运行
+        var input = document.querySelector('#uploadFile'); //所有的input元素
+        const formdata = new FormData();
+
+
+        // 监听change事件直接传file
+        input.onchange = function (e) { //当用户选择文件时
+            var file = this.files[0]; //假设单个文件选择
+            if (!file) return; //如果没有文件，不做任何事情
+            var req = new XMLHttpRequest(); //创建新请求
+            formdata.append("path", '[[${path}]]');
+            formdata.append('file', file);
+            req.open("POST", url); //向这个URL发送POST请求
+            req.send(formdata); //把文件作为主体发送
+            req.onload = function(){
+               window.location.reload();
+            }
+        }
+    }
+    uploadfile("/api/uploadFile")
+
+
+    function uploadDirectory() {
+        var input = document.querySelector('#uploadDirectory'); //所有的input元素
+
+
+        // 监听change事件直接传file
+        input.onchange = function (e) { //当用户选择文件时
+            const form = document.querySelector('#form')
+            form.submit()
+        }
+
+
+    }
+    uploadDirectory()
+</script>
+</body>
+</html>

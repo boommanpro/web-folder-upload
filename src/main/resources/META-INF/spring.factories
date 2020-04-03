@@ -1,0 +1,3 @@
+# Application Listeners
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.boommanpro.webfolderupload.bindenvironment.register.EnableBindEnvironmentPropertiesRegister
