@@ -15,6 +15,6 @@ link: https://www.v2ex.com/t/658899
 
 在发布了主题后,感觉也不是很麻烦,遂自己手动撸了一个.
 
-
+![eg](http://github.com/BoomManPro/web-folder-upload/blob/master/images/eg.png?raw=true)
 
 感谢@陈禹(chenyujiandan@sina.com) 提供前端设计
