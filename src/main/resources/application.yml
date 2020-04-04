@@ -1,9 +1,13 @@
-upload:
-  folder:
-    dir-absolute-path: F:\nginx\
+server:
+  port: 80
 spring:
   servlet:
     multipart:
       max-file-size: 1024MB
       max-request-size: 1024MB
-
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: /preview/**
+  resources:
+    static-locations: file:${upload.folder.dir-absolute-path}

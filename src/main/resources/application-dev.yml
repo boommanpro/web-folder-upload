@@ -1,11 +1,6 @@
+server:
+  port: 8080
+
 upload:
   folder:
     dir-absolute-path: F:\nginx\
-spring:
-  thymeleaf:
-    cache: false
-  mvc:
-    static-path-pattern: /preview/**
-  resources:
-    static-locations: file:F:\nginx\
-

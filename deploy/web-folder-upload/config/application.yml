@@ -1,0 +1,5 @@
+server:
+  port: 8081
+upload:
+  folder:
+    dir-absolute-path: /usr/local/web-folder-upload/file/
