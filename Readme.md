@@ -17,4 +17,13 @@ link: https://www.v2ex.com/t/658899
 
 ![eg](http://github.com/BoomManPro/web-folder-upload/blob/master/images/eg.png?raw=true)
 
+
+
+## How to use
+
+download release
+
+
+
+
 感谢@陈禹(chenyujiandan@sina.com) 提供前端设计
