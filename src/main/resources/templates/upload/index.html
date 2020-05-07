@@ -34,8 +34,9 @@
     </div>
     <div th:each="file : ${files}">
         <div style="display: inline-block;width: 300px">
-            <a th:if="${file.fileType == file.fileType.DIRECTORY}" th:href="${file.getFileName()+'/'}"
-               th:text="${file.getFileName()+'/'}">1</a><a th:if="${file.fileType == file.fileType.FILE}"
+            <a th:if="${file.fileType == file.fileType.DIRECTORY}" th:href="${@urlEncodeUtils.encode(file.getFileName())+'/'}"
+               th:text="${file.getFileName()+'/'}">1</a>
+            <a th:if="${file.fileType == file.fileType.FILE}"
                                                            data-th-text="${file.fileName }" th:href="${file.relativePath}"></a>
         </div>
         <div style="display: inline-block;width: 200px">
